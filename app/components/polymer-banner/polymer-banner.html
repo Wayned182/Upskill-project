@@ -1,0 +1,30 @@
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html" />
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html" />
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html" />
+<link rel="import" href="../../../bower_components/paper-styles/paper-styles.html" />
+
+<dom-module id='polymer-banner'>
+    <style>
+        .banner {
+            height: 144px;
+            padding: 16px;
+
+            background: var(--default-primary-color);
+            color: var(--text-primary-color);
+            @apply(--paper-font-display1);
+        }
+    </style>
+    <template>
+        <div class="banner">
+            Audit Grok
+        </div>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'polymer-banner',
+        properties:{
+        }
+    });
+</script>
