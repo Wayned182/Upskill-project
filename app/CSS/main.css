@@ -8,3 +8,6 @@ html, body {
 
 html /deep/ * {
   font-family: roboto, sans-serif; }
+  
+.f-right {
+  float: right !important; }  

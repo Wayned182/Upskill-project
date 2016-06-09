@@ -1,15 +1,16 @@
 <link rel="import" href="../../../bower_components/paper-input/paper-input.html" />
 <link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html" />
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html" />
-<link rel="import" href="../../../bower_components/paper-styles/paper-styles.html" /> 
+<link rel="import" href="../../../bower_components/paper-styles/paper-styles.html" />
 
 <dom-module id='polymer-search'>
-    <style>
-        div.search {
-            right: 0px;
-            width: 300px;
+    <style is="custom-style">
+        .search {
+            width: 400px;
             padding: 16px;
-            background-color: deepskyblue;
+        }
+        .button {
+            background-color: var(--google-blue-700);            
         }
     </style>
     <template>
@@ -18,7 +19,7 @@
                 <paper-input label="Category"></paper-input>
                 <paper-input label="Request Data"></paper-input>
                 
-                <paper-button raised on-click="searchAction"><iron-icon icon="search"></iron-icon>Search</paper-button>
+                <paper-button on-click="searchAction" class="button" ><iron-icon icon="search"></iron-icon>Search</paper-button>
         </div>
     </template>
 </dom-module>
