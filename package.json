@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "name": "UpskillProject",
+  "description": "My First PolymerProject",
+  "Private": true,
+  "devDependencies": {
+    "express": "^4.13.4",
+    "json-server": "^0.8.14"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "BSD-3-Clause"
+}

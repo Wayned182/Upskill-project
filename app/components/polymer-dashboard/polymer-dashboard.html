@@ -1,0 +1,69 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html" />
+<link rel="import" href="../../../bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="../polymer-search/polymer-search.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html" />
+
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html"/>
+<link rel="import" href="../../../bower_components/iron-icon/iron-icon.html" />
+
+
+<dom-module id='polymer-dashboard'>
+    <link rel="stylesheet" href="../../../app/css/main.css" />
+    <template>
+        <polymer-search id="search"></polymer-search>
+
+        <div>
+            <vaadin-grid id="logsGrid">
+            <table>
+                <colgroup>
+                    <col name="requestId"/>
+                    <col name="requestGUID"/>
+                    <col name="appName"/>
+                    <col name="dateTime"/>
+                    <col name="category"/>
+                    <col name="operatorId"/>
+                    <col name="requestData"/>
+                </colgroup>
+            </table>
+            </vaadin-grid>            
+        </div>
+
+        <iron-ajax id="getLogsRequest" url="http://localhost:5000/logs" method="GET" handle-as="json" on-response="getLogsCallback" with-credentials="true" auto></iron-ajax>
+        <iron-ajax id="searchLogsRequest" url="http://localhost:5000/logs" method="GET" handle-as="json" on-response="getLogsCallback" with-credentials="true"></iron-ajax>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'polymer-dashboard',
+        properties:{
+            logs:{
+                type:Array,
+                notify:true
+            }
+        },
+        ready:function(){
+            var self = this;
+            self.$.search.addEventListener("search", function(event){self.searchLogs(event.detail); });
+        },
+        searchLogs:function(search){
+            var self = this;
+            if (search != null && search != "")
+            {
+                self.$.searchLogsRequest.params["requestGUID"] = search;
+                self.$.searchLogsRequest.generateRequest();
+            }
+            else
+            {
+                self.$.getLogsRequest.generateRequest();
+            }
+        },
+        getLogsCallback:function(response){
+            var self = this;
+            self.logs = response.detail.response;
+            var grid = document.querySelector('#logsGrid');
+            grid.items = self.logs;
+        }
+    });
+</script>

@@ -1,0 +1,35 @@
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html" />
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html" />
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html" />
+<link rel="import" href="../../../bower_components/paper-styles/paper-styles.html" /> 
+
+<dom-module id='polymer-search'>
+    <style>
+        div.search {
+            right: 0px;
+            width: 300px;
+            padding: 16px;
+            background-color: deepskyblue;
+        }
+    </style>
+    <template>
+        <div class="search">
+                <paper-input label="Request GUID" class="search-RequestGUID"></paper-input>
+                <paper-input label="Category"></paper-input>
+                <paper-input label="Request Data"></paper-input>
+                
+                <paper-button raised on-click="searchAction"><iron-icon icon="search"></iron-icon>Search</paper-button>
+        </div>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'polymer-search',
+        properties:{
+        },
+        searchAction:function(){
+            this.fire("search",this.querySelector(".search-RequestGUID").value);
+        }
+    });
+</script>
